@@ -207,7 +207,7 @@ func main() {
     stateTransitionInputs := circuits.StateTransitionInputs{
         ID:                identityId,
         OldTreeState:      genesisTreeState,
-        NewTreeState:          newTreeState,
+        NewTreeState:      newTreeState,
         IsOldStateGenesis: true,
         AuthClaim: authClaim,
         AuthClaimIncMtp: authMTPProof,
@@ -218,6 +218,8 @@ func main() {
     // Perform marshalling of the state transition inputs
     inputBytes, _ := stateTransitionInputs.InputsMarshal()
 
-    fmt.Println(string(inputBytes))
+    fmt.Println("string(inputBytes)")
+    fmt.Println(inputBytes)
+    fmt.Println(stateTransitionInputs)
 
 }
