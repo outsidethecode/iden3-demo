@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"math/big"
 	"time"
+    "io/ioutil"
 
 	"github.com/iden3/go-circuits"
 	core "github.com/iden3/go-iden3-core"
@@ -138,26 +139,31 @@ func main() {
 
     // Signature Claim Issuance ----------------------------------------------------------------------
 
-    claimIndex, claimValue := claim.RawSlots()
-    indexHash2, _ := poseidon.Hash(core.ElemBytesToInts(claimIndex[:]))
-    valueHash2, _ := poseidon.Hash(core.ElemBytesToInts(claimValue[:]))
+    // claimIndex, claimValue := claim.RawSlots()
+    // indexHash2, _ := poseidon.Hash(core.ElemBytesToInts(claimIndex[:]))
+    // valueHash2, _ := poseidon.Hash(core.ElemBytesToInts(claimValue[:]))
 
-    // Poseidon Hash the indexHash and the valueHash together to get the claimHash
-    claimHash, _ := merkletree.HashElems(indexHash2, valueHash2)
+    // // Poseidon Hash the indexHash and the valueHash together to get the claimHash
+    // claimHash, _ := merkletree.HashElems(indexHash2, valueHash2)
 
-    // Sign the claimHash with the private key of the issuer
-    claimSignature := babyJubjubPrivKey.SignPoseidon(claimHash.BigInt())
-    fmt.Println("Claim Signature:", claimSignature)
+    // // Sign the claimHash with the private key of the issuer
+    // claimSignature := babyJubjubPrivKey.SignPoseidon(claimHash.BigInt())
+    // fmt.Println("Claim Signature:", claimSignature)
 
     // Signature via Mercle Tree ----------------------------------------------------------------------
 
     // GENESIS STATE:
 
     // 1. Generate Merkle Tree Proof for authClaim at Genesis State
-    authMTPProof, _, _ := clt.GenerateProof(ctx, hIndex, clt.Root())
+    authMTPProof, _, _ := clt.GenerateProof(ctx, hIndex, nil)
+    authMTPProofToMarshal, _ := json.Marshal(authMTPProof)
+    fmt.Println("------ authMTPProof ------ ")
+    fmt.Println(string(authMTPProofToMarshal))
 
+
+    
     // 2. Generate the Non-Revocation Merkle tree proof for the authClaim at Genesis State
-    authNonRevMTPProof, _, _ := ret.GenerateProof(ctx, new(big.Int).SetUint64(revNonce), ret.Root())
+    authNonRevMTPProof, _, _ := ret.GenerateProof(ctx, new(big.Int).SetUint64(revNonce), nil)
 
     // Snapshot of the Genesis State
     genesisTreeState := circuits.TreeState{
@@ -198,6 +204,9 @@ func main() {
         RootOfRoots:    rot.Root(),
     }
     
+
+    authNewStateMTPProof, _, _ := clt.GenerateProof(ctx, hi, nil)
+
     // Sign a message (hash of the genesis state + the new state) using your private key
     hashOldAndNewStates, _ := poseidon.Hash([]*big.Int{state.BigInt(), newState.BigInt()})
 
@@ -212,6 +221,7 @@ func main() {
         AuthClaim: authClaim,
         AuthClaimIncMtp: authMTPProof,
         AuthClaimNonRevMtp: authNonRevMTPProof,
+        AuthClaimNewStateIncMtp: authNewStateMTPProof,
         Signature: signature,
     }
 
@@ -219,7 +229,11 @@ func main() {
     inputBytes, _ := stateTransitionInputs.InputsMarshal()
 
     fmt.Println("string(inputBytes)")
-    fmt.Println(inputBytes)
-    fmt.Println(stateTransitionInputs)
+    fmt.Println(string(inputBytes))
+    fmt.Printf("%+v\n", stateTransitionInputs)
+
+    file, _ := json.Marshal(string(inputBytes))
+ 
+	_ = ioutil.WriteFile("./compiled-circuits/stateTransition/stateTransition_js/input.json", file, 0644)
 
 }
