@@ -1,0 +1,52 @@
+c
+const c = await ethers.getContractAt("StateV2", "0xff8d57666B95E4f9560F4DB7412605A7B1d17918");
+ethers.provider
+ethers.getContractAt("Sta", "0xdB4c661456A023a403CF83784f9d15a1D3540702")
+ethers.getContractAt("StateV1", "0xdB4c661456A023a403CF83784f9d15a1D3540702")
+ethers.getContractAt("State", "0xdB4c661456A023a403CF83784f9d15a1D3540702")
+ethers.getContractAt("StateV2", "0xdB4c661456A023a403CF83784f9d15a1D3540702")
+ethers.getContractAt("StateV1", "0xdB4c661456A023a403CF83784f9d15a1D3540702")
+await c.owner()
+c.owner()
+c
+c.indentities
+c.indentities()
+c.indentities
+const bal3 = await ethers.provider.getBalance("0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc911")
+bal2
+const bal2 = await ethers.provider.getBalance("0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9")
+bal
+const bal = await ethers.provider.getBalance("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266")
+ethers.provider.getBalance("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266")
+ethers.getBalance()
+await c.getState("0")
+await c.getState(0)
+c.getState(0)
+c
+const c = await ethers.getContractAt("State", "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc1111111")
+c2
+const c2 = await ethers.getContractAt("State", "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc1111111")
+const c = await ethers.getContractAt("State", "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc1111111")
+c
+const c = await ethers.getContractAt("State", "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9")
+sins[1]
+sins[0]
+let sins = await ethers.getSigners();
+ethers.getSigners().get()
+await ethers.getSigners()
+ethers.getSigners()
+ethers.signers
+await ethers.provider.getCode("0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9")
+ethers.provider.getCode("0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9")
+ethers.provider.getCode
+ethers.provider
+provider
+identityState0 = await contract.getState("0");
+identityState0 = await contract.getState(0);
+let identityState0 = await contract.getState(0);
+let identityState0 = await contract.getState(12);
+contract
+const contract = await ethers.getContractAt("State", "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9");
+ethers.getContractAt("State", "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9")
+ethers
+config

@@ -1,0 +1,71 @@
+State: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+'StateV2 contract deployed to address 0xa513E6E4b8f2a923D98304ec87F64353C4D5C853 from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'
+'State contract deployed to address 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9 from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'
+
+
+
+Mumbai
+
+[ '======== StateV1: deploy started ========' ]
+[ 'deploying verifier...' ]
+[
+  'Verifier contract deployed to address 0xC983AD9898433FA08989bD277CEE9aFBcD9cA47C from 0x60F86c7AEEB63EFa0eb3afdadea5745F0a2bA7D0'
+]
+[ 'deploying state...' ]
+[
+  'State contract deployed to address 0xdB4c661456A023a403CF83784f9d15a1D3540702 from 0x60F86c7AEEB63EFa0eb3afdadea5745F0a2bA7D0'
+]
+[ '======== StateV1: deploy completed ========' ]
+
+
+
+
+-----------------------------------------
+
+
+[ '======== StateV2: deploy started ========' ]
+[ 'deploying verifier...' ]
+[
+  'Verifier contract deployed to address 0xB663269fc7333eC36009976904b616758126B7e3 from 0x60F86c7AEEB63EFa0eb3afdadea5745F0a2bA7D0'
+]
+[ 'deploying poseidons...' ]
+[
+  'Poseidon1Elements deployed to:',
+  '0x718d554EAbE2861AA961aE58a70619A7611831d7'
+]
+[
+  'Poseidon2Elements deployed to:',
+  '0xfd66A1953679E5C12A3EdeF76438523f90476674'
+]
+[
+  'Poseidon3Elements deployed to:',
+  '0x836255d14EB49A3Ba45370d9F014664a6A81945A'
+]
+[ 'deploying SMT...' ]
+[ 'Smt deployed to:  0xa75525BF87fBF01473849cf785a2634A2AF7E80C' ]
+[ 'deploying stateV2...' ]
+Warning: Potentially unsafe deployment of contracts/state/StateV2.sol:StateV2
+
+    You are using the `unsafeAllow.external-library-linking` flag to include external libraries.
+    Make sure you have manually checked that the linked libraries are upgrade safe.
+
+[
+  'StateV2 contract deployed to address 0xff8d57666B95E4f9560F4DB7412605A7B1d17918 from 0x60F86c7AEEB63EFa0eb3afdadea5745F0a2bA7D0'
+]
+[ '======== StateV2: deploy completed ========' ]
+
+
+
+local
+
+[ '======== StateV1: deploy started ========' ]
+[ 'deploying verifier...' ]
+[
+  'Verifier contract deployed to address 0x5FbDB2315678afecb367f032d93F642f64180aa3 from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'
+]
+[ 'deploying state...' ]
+[
+  'State contract deployed to address 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9 from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'
+]
+[ '======== StateV1: deploy completed ========' ]
+

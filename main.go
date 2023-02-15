@@ -155,7 +155,7 @@ func main() {
     // GENESIS STATE:
 
     // 1. Generate Merkle Tree Proof for authClaim at Genesis State
-    authMTPProof, _, _ := clt.GenerateProof(ctx, hIndex, nil)
+    authMTPProof, _, _ := clt.GenerateProof(ctx, hIndex, clt.Root())
     authMTPProofToMarshal, _ := json.Marshal(authMTPProof)
     fmt.Println("------ authMTPProof ------ ")
     fmt.Println(string(authMTPProofToMarshal))
@@ -163,7 +163,7 @@ func main() {
 
     
     // 2. Generate the Non-Revocation Merkle tree proof for the authClaim at Genesis State
-    authNonRevMTPProof, _, _ := ret.GenerateProof(ctx, new(big.Int).SetUint64(revNonce), nil)
+    authNonRevMTPProof, _, _ := ret.GenerateProof(ctx, new(big.Int).SetUint64(revNonce), ret.Root())
 
     // Snapshot of the Genesis State
     genesisTreeState := circuits.TreeState{

@@ -7,10 +7,10 @@ async function main() {
   
     console.log("Account balance:", (await deployer.getBalance()).toString());
   
-    const Token = await ethers.getContractFactory("Token");
-    const token = await Token.deploy();
+    const StateV2 = await ethers.getContractFactory("Poseidon");
+    const token = await StateV2.deploy();
   
-    console.log("Token address:", token.address);
+    console.log("StateV2 address:", token.address);
   }
   
   main()
