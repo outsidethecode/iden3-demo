@@ -1,0 +1,8 @@
+npm install 
+
+npx hardhat compile
+
+npx hardhat run scripts/deploy.ts --network mumbai
+
+npx hardhat run scripts/update-state.js --network mumbai
+
