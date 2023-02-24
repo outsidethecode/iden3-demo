@@ -5,6 +5,7 @@ pragma abicoder v2;
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "../lib/Smt.sol";
 import "../lib/Poseidon.sol";
+import "hardhat/console.sol";
 
 interface IVerifier {
     function verifyProof(
@@ -154,6 +155,8 @@ contract StateV2 is OwnableUpgradeable {
         uint256[2][2] memory b,
         uint256[2] memory c
     ) public {
+        console.log("Ahaaaaaaa we are now transitting ...");
+
         if (isOldStateGenesis) {
             require(
                 !idExists(id),
@@ -235,6 +238,7 @@ contract StateV2 is OwnableUpgradeable {
         onlyExistingId(id)
         returns (StateInfo memory)
     {
+        console.log("Ahaaaaaaa ");
         return
             _getStateInfoByState(
                 _stateData.statesHistories[id][

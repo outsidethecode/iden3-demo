@@ -3,37 +3,32 @@ const hre = require("hardhat");
 async function main() {
 
   // Import State contract from existing address
-  const contract = await hre.ethers.getContractAt("StateV2", "0xff8d57666B95E4f9560F4DB7412605A7B1d17918");
+  // Mumbai
+  const contract = await hre.ethers.getContractAt("StateV2", "0xd04E12407D5B5ec66c0400Cb88347B89Ccf5e42e");
 
-  // Add inputs from proof
-  const id = "0x00e00c0ee273921f3aa97ba2de5480f140b17e2d35943a8f17a7f45aa04f0000"
-  const oldState = "0x0ee273921f3aa97ba2de5480f140b17e2d35943a8f17a7f45aa04fb715a18685"
-  const newState = "0x2ba2ba06e0fec5e71fb55019925946590743750a181744fe8eeb8da62e0709db"
+  const id = "0x000f370e06d4e2f589488a5ca49b72dddece47db5bd18c79b4802feda2420000"
+  const oldState = "0x0e06d4e2f589488a5ca49b72dddece47db5bd18c79b4802feda2421e8db009ab"
+  const newState = "0x276f10801ff6f5c62159ff58efcd900915756116344cc4474ad31e78107742df"
   const isOldStateGenesis = "0x0000000000000000000000000000000000000000000000000000000000000001"
-
-  const a = ["0x2b256e25496ac8584bf5714d347821cf9ac8f2472310306033d1ebd4613d12e9", "0x2cca3d40ba395135a38b4ac8c6f8daf81e968ab7082d26d778a82aad9c39d8e3"]
-  const b = [["0x2b92b4fc713b659225bfc2b2560b4a1af7901b2a5ee4a3ed07465a88f70e71b3", "0x241ce1ba397c4e1d65059779cacf30fd8d977ed89e6964fa4aa84daec7965254"],["0x27099d3f5cac46fa58c031913c5cd68e24634e9d80281a3d0c0c091bdf574786", "0x08df6f588353293a926660cb1b65a13ad8c5094a42e76dc46d2963ca1cacc096"]]
-  const c = ["0x0873f0c6ad05f760775b74a8a6e391beb5b5d3a040a3259f6f5c2429b9d37f8d", "0x15ff3cb9c37c9a07b0fdb2f24cad7bf56adc632c625d9d236841676d731f661b"]
-
+  
+  const a = ["0x0e535a98dcfd463c64bbde46aadb5020671db74b5f8a70633ff897928025fa25", "0x1c236fb9d89c9270a13b36ef7ba47fb2a6cdf6010a731b89f91457109688ccfc"]
+  const b = [["0x07d2551699b67717902ce85993632f74852cb5569910fdba1a7584e115b6a105", "0x00500d6563d5ab43319b660621ec5a61e0e79b856b253e2eae9e11a91e7746f5"],["0x2e2f89b159132fcbcf8ed69ea5dbe1f8dba42081465b7aa32c52dc8a1fd89424", "0x2f40fafcfc060c4de230a72da177d4edcb7fbbe9e70a59796c6a53abca311892"]]
+  const c = ["0x000dfa821bcaa380ed899f65f1129104350ea4b8593ba54eb52faf932a062ba2", "0x1b7c70ecce5027775e3c5850ce2db735c69d3f576c8b5694113b194f81088429"]
 
   console.log("Init ... ");
 
   // Check Identity State for your ID before state transition
-  let identityState0;
-  if (await contract.idExists(id)) {
-    console.log("ID exists");
-    identityState0 = await contract.getState(id);
-  } else {
-    console.log("ID does not exist");
-    identityState0 = 0;
-  }
+  let identityState0 = 0;//await contract.getStateInfoById(id);
 
   console.log("Identity State at t=0", identityState0);
 
   // Execute state transition
-  await contract.transitState(id, oldState, newState, isOldStateGenesis, a, b, c);
-  console.log("-----------------------------");
+  let tx = await contract.transitState(id, oldState, newState, isOldStateGenesis, a, b, c);
 
+  // wait for transaction to be mined
+  await tx.wait();
+
+  console.log("-----------------------------");
   // Check Identity State for your ID after state transition
   identityState = await contract.getStateInfoById(id);
 

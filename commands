@@ -6,3 +6,38 @@ npx hardhat run scripts/deploy.ts --network mumbai
 
 npx hardhat run scripts/update-state.js --network mumbai
 
+// Deploy locally
+npx hardhat node
+npx hardhat accounts
+npx hardhat run scripts/deploy.ts --network localhost
+
+
+
+// To compile the stateTransition circuit:
+
+// 1. Install circum ecosystem https://docs.circom.io/getting-started/installation/
+git clone https://github.com/iden3/circom.git
+cargo build --release
+cargo install --path circom
+
+// 2. Compile the circuit
+~/circuits$ ./compile-circuit.sh circuits/stateTransition.circom build/powersOfTau28_hez_final_16.ptau 
+The file powersOfTau28_hez_final_16.ptau can be downloaded from https://github.com/iden3/snarkjs/blob/master/README.md
+
+// run main.go to generate the state transition information 
+go run ./main.go
+
+// Copy the resultant json to input.json file
+
+// Generate the zkp via snarkJS. This will generate the public.json and proof.json
+./generate.sh stateTransition
+
+// Export the proof in the Solidity metadata
+snarkjs generatecall
+
+// To check the state transition using the smart contract, and to update the state
+npx hardhat run ./scripts/update-state-v2.js --network mumbai
+
+// Or: npx hardhat run ./scripts/update-state-v2.js --network localhost
+// Ensure you edit the following line in update-state-v2.js according the chosen network
+// const contract = await hre.ethers.getContractAt("StateV2", "0x322813Fd9A801c5507c9de605d63CEA4f2CE6c44");

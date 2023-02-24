@@ -69,3 +69,67 @@ local
 ]
 [ '======== StateV1: deploy completed ========' ]
 
+[ '======== StateV2: deploy started ========' ]
+[ 'deploying verifier...' ]
+[
+  'Verifier contract deployed to address 0x5FbDB2315678afecb367f032d93F642f64180aa3 from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'
+]
+[ 'deploying poseidons...' ]
+[
+  'Poseidon1Elements deployed to:',
+  '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512'
+]
+[
+  'Poseidon2Elements deployed to:',
+  '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0'
+]
+[
+  'Poseidon3Elements deployed to:',
+  '0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9'
+]
+[ 'deploying SMT...' ]
+[ 'Smt deployed to:  0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9' ]
+[ 'deploying stateV2...' ]
+Warning: Potentially unsafe deployment of contracts/state/StateV2.sol:StateV2
+
+    You are using the `unsafeAllow.external-library-linking` flag to include external libraries.
+    Make sure you have manually checked that the linked libraries are upgrade safe.
+
+[
+  'StateV2 contract deployed to address 0xa513E6E4b8f2a923D98304ec87F64353C4D5C853 from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'
+]
+[ '======== StateV2: deploy completed ========' ]
+
+
+New deployment on Mumbai
+
+[ '======== StateV2: deploy started ========' ]
+[ 'deploying verifier...' ]
+[
+  'Verifier contract deployed to address 0x98d685FD133b0d10CFB26F93D66855EF1Cf415ed from 0x60F86c7AEEB63EFa0eb3afdadea5745F0a2bA7D0'
+]
+[ 'deploying poseidons...' ]
+[
+  'Poseidon1Elements deployed to:',
+  '0x5E7C2221b74D919e9b742FA2215A9867fC28B821'
+]
+[
+  'Poseidon2Elements deployed to:',
+  '0xd1588973f7a348cB849009fC4a25a474E03A9094'
+]
+[
+  'Poseidon3Elements deployed to:',
+  '0xF14b0bF947308C544FcE8bE32846934f42C0352b'
+]
+[ 'deploying SMT...' ]
+[ 'Smt deployed to:  0xC5F7879fAfBa0Ab794b5f354584ee65e5336fDBF' ]
+[ 'deploying stateV2...' ]
+Warning: Potentially unsafe deployment of contracts/state/StateV2.sol:StateV2
+
+    You are using the `unsafeAllow.external-library-linking` flag to include external libraries.
+    Make sure you have manually checked that the linked libraries are upgrade safe.
+
+[
+  'StateV2 contract deployed to address 0xd04E12407D5B5ec66c0400Cb88347B89Ccf5e42e from 0x60F86c7AEEB63EFa0eb3afdadea5745F0a2bA7D0'
+]
+[ '======== StateV2: deploy completed ========' ]

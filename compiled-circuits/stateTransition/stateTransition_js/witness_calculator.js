@@ -129,20 +129,16 @@ class WitnessCalculator {
     }
 
     async _doCalculateWitness(input, sanityCheck) {
-        console.log(input);
 	//input is assumed to be a map from signals to arrays of bigints
         this.instance.exports.init((this.sanityCheck || sanityCheck) ? 1 : 0);
         const keys = Object.keys(input);
 	var input_counter = 0;
         keys.forEach( (k) => {
-            console.log(k);
             const h = fnvHash(k);
             const hMSB = parseInt(h.slice(0,8), 16);
             const hLSB = parseInt(h.slice(8,16), 16);
             const fArr = flatArray(input[k]);
 	    let signalSize = this.instance.exports.getInputSignalSize(hMSB, hLSB);
-        console.log(signalSize);
-        console.log(fArr);
 	    if (signalSize < 0){
 		throw new Error(`Signal ${k} not found\n`);
 	    }
@@ -153,7 +149,7 @@ class WitnessCalculator {
 		throw new Error(`Too many values for input signal ${k}\n`);
 	    }
             for (let i=0; i<fArr.length; i++) {
-                const arrFr = toArray32(BigInt(fArr[i])%this.prime,this.n32)
+                const arrFr = toArray32(normalize(fArr[i],this.prime),this.n32)
                 for (let j=0; j<this.n32; j++) {
 		    this.instance.exports.writeSharedRWMemory(j,arrFr[this.n32-1-j]);
 		}
@@ -318,6 +314,12 @@ function flatArray(a) {
             res.push(a);
         }
     }
+}
+
+function normalize(n, prime) {
+    let res = BigInt(n) % prime
+    if (res < 0) res += prime
+    return res
 }
 
 function fnvHash(str) {

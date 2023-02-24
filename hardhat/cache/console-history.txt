@@ -1,3 +1,6 @@
+accounts
+.help
+help
 c
 const c = await ethers.getContractAt("StateV2", "0xff8d57666B95E4f9560F4DB7412605A7B1d17918");
 ethers.provider

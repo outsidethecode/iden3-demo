@@ -921,8 +921,8 @@
       ]
     },
     "/home/zakwan/iden3-demo/hardhat/contracts/state/StateV2.sol": {
-      "lastModificationDate": 1676473493585,
-      "contentHash": "771576ad895f52f86bc823f96ee519b5",
+      "lastModificationDate": 1676890367438,
+      "contentHash": "cfd7e3d477931f3c7517d51a07a1148f",
       "sourceName": "contracts/state/StateV2.sol",
       "solcConfig": {
         "version": "0.8.15",
@@ -951,7 +951,8 @@
       "imports": [
         "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
         "../lib/Smt.sol",
-        "../lib/Poseidon.sol"
+        "../lib/Poseidon.sol",
+        "hardhat/console.sol"
       ],
       "versionPragmas": [
         "0.8.15"
@@ -1375,8 +1376,8 @@
       ]
     },
     "/home/zakwan/iden3-demo/hardhat/contracts/lib/verifierV2.sol": {
-      "lastModificationDate": 1676473493585,
-      "contentHash": "c2695565a22320996b2805277a4eedc0",
+      "lastModificationDate": 1677237394741,
+      "contentHash": "8a9137ea0f0447b3393b822cd896eca3",
       "sourceName": "contracts/lib/verifierV2.sol",
       "solcConfig": {
         "version": "0.6.11",
@@ -1409,6 +1410,42 @@
       "artifacts": [
         "Pairing",
         "VerifierV2"
+      ]
+    },
+    "/home/zakwan/iden3-demo/hardhat/node_modules/hardhat/console.sol": {
+      "lastModificationDate": 1676477068056,
+      "contentHash": "4ff3cd2f6272c9a6516e9ee4f2b967d3",
+      "sourceName": "hardhat/console.sol",
+      "solcConfig": {
+        "version": "0.8.15",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">= 0.4.22 <0.9.0"
+      ],
+      "artifacts": [
+        "console"
       ]
     }
   }
